@@ -1,6 +1,7 @@
 # myapp
 
-> A Vue.js project
+> 本项目是基于Vue2.0创建的一个仿ONE.一个APP制作的App
+> 其中运用到：Vue2.0 , Vue cli , Vue router , Axios , Webpack , Scass , BetterScroll
 
 
 #目前已实现部分：
