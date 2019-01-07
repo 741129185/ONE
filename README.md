@@ -1,6 +1,6 @@
-# myapp
+# SimpleOne
 
-> 本项目是基于Vue2.0创建的一个仿ONE.一个APP制作的App.  其中运用到：Vue2.0 , Vue cli , Vue router , Axios , Webpack , Scass , BetterScroll
+> 高仿韩寒的one一个，基于Vue2.0实现的客户端.  其中运用到：Vue2.0 , Vue cli , Vue router , Axios , Webpack , Scass , BetterScroll
 
 
 #目前已实现部分：
@@ -30,7 +30,7 @@ TODO:项目中JSON文件是作者根据ONE.一个APP中的数据进行编写的�
 ```
 
 
-## Build Setup
+## 如何运行
 
 ``` bash
 # install dependencies
@@ -39,11 +39,5 @@ npm install
 # serve with hot reload at localhost:8080
 npm run dev
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
