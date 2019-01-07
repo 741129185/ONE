@@ -2,6 +2,9 @@
 
 > A Vue.js project
 
+
+#目前已实现部分：
+
 ## Build Setup
 
 ``` bash
