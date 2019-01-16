@@ -16,6 +16,13 @@ import MusicDetail from '../components/detailPage/MusicDetail.vue'
 import FilmDetail from '../components/detailPage/FilmDetail.vue'
 import SearchResultPage from '../components/searchPage/SearchResultPage.vue'
 import SearchResultDetail from '../components/searchPage/SearchResultDetail.vue'
+import RegisterView from '../components/loginAndregister/RegisterView.vue'
+import LoginView from '../components/loginAndregister/LoginView.vue'
+import ArticleCollect from '../components/collectPage/ArticleCollect.vue'
+import FilmCollect from '../components/collectPage/FilmCollect.vue'
+import ImgCollect from '../components/collectPage/ImgCollect.vue'
+import MusicCollect from '../components/collectPage/MusicCollect.vue'
+import QuestionCollect from '../components/collectPage/QuestionCollect.vue'
 
 Vue.use(Router)
 
@@ -63,6 +70,16 @@ export default new Router({
       component: FilmPage
     },
     {
+      path: '/register',
+      name: 'RegisterView',
+      component: RegisterView
+    },
+    {
+      path: '/login',
+      name: 'LoginView',
+      component: LoginView
+    },
+    {
       path: '/search',
       name: 'SearchResultPage',
       component: SearchResultPage,
@@ -103,6 +120,31 @@ export default new Router({
       path: '/film/:id',
       name: 'FilmDetail',
       component: FilmDetail
+    },
+    {
+      path: '/collect/article',
+      name: 'ArticleCollect',
+      component: ArticleCollect
+    },
+    {
+      path: '/collect/film',
+      name: 'FilmCollect',
+      component: FilmCollect
+    },
+    {
+      path: '/collect/one',
+      name: 'ImgCollect',
+      component: ImgCollect
+    },
+    {
+      path: '/collect/music',
+      name: 'MusicCollect',
+      component: MusicCollect
+    },
+    {
+      path: '/collect/question',
+      name: 'QuestionCollect',
+      component: QuestionCollect
     }
   ]
 })

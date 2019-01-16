@@ -21,9 +21,9 @@
   export default {
     name: 'ImgTextDetail',
     data() {
-        return {
-          newTitle: '一个图文'
-        }
+      return {
+        newTitle: '一个图文'
+      }
     },
     components: {
       Header,

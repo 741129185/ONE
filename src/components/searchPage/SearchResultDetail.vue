@@ -2,6 +2,7 @@
   <div class="search" ref="search">
     <ul>
       <div class="article-box" v-if="$route.params.name === 'article'">
+        <not-found v-if="$route.params.name === 'article' && $route.params.res.length === 0"/>
         <div class="res-box" v-for="(el,index) in res" :key="index">
           <p class="date">{{el.day}} {{el.date}}</p>
           <p class="title">{{el.title}}</p>
@@ -10,6 +11,7 @@
         </div>
       </div>
       <div class="pic-box" v-if="$route.params.name === 'pic'">
+        <not-found v-if="$route.params.name === 'pic' && $route.params.res.length === 0"/>
         <div class="res-box" v-for="(el, index) in res" :key="index">
           <p class="date">{{el.day}} {{el.date}}</p>
           <div class="main">
@@ -22,6 +24,7 @@
         </div>
       </div>
       <div class="question-box" v-if="$route.params.name === 'question'">
+        <not-found v-if="$route.params.name === 'question'  && $route.params.res.length === 0"/>
         <div class="res-box" v-for="(el,index) in res" :key="index">
           <p class="date">{{el.date}}</p>
           <p class="title">{{el.title}}</p>
@@ -29,6 +32,7 @@
         </div>
       </div>
       <div class="film-box" v-if="$route.params.name === 'film'">
+        <not-found v-if="$route.params.name === 'film'  && $route.params.res.length === 0"/>
         <div class="res-box" v-for="(el,index) in res" :key="index">
           <p class="title">{{el.title}}</p>
           <p class="film">{{el.text_subtitle}}</p>
@@ -36,7 +40,6 @@
           <p class="desc">&nbsp;&nbsp;&nbsp;&nbsp;{{el.content_short}}</p>
         </div>
       </div>
-      <not-found v-else/>
     </ul>
   </div>
 </template>
@@ -138,6 +141,7 @@
         .pic {
           flex: 0 0 30%;
           img {
+            border: none;
             margin: 10px 0 0 -10px;
             width: 110px;
             height: 75px;

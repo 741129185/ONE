@@ -5,16 +5,19 @@
     <div class="film" ref="film">
       <ul>
         <div class="white"></div>
-        <div class="demo" v-for="(item,index) in detailAll.detail" :key="index" @click="toDetail(item,detailAll)">
-          <p class="text-tag">- 影视 -</p>
-          <p class="title">{{item.title}}</p>
-          <p class="author">文 / {{item.author}}</p>
-          <div class="main-box">
-            <img :src="item.category_img">
+        <div class="demo" v-for="(item,index) in detailAll.detail" :key="index">
+          <div @click="toDetail(item,detailAll)">
+            <p class="text-tag">- 影视 -</p>
+            <p class="title">{{item.title}}</p>
+            <p class="author">文 / {{item.author}}</p>
+            <div class="main-box">
+              <img :src="item.category_img">
+            </div>
+            <p class="content-short">{{item.content_short}}</p>
+            <p class="content-from">{{item.text_subtitle}}</p>
+            <p class="date">{{item.date}}</p>
           </div>
-          <p class="content-short">{{item.content_short}}</p>
-          <p class="content-from">{{item.text_subtitle}}</p>
-          <p class="date">{{item.date}}</p>
+          <demo-footer :likeCount="item.like_count" :id="item.id"></demo-footer>
         </div>
         <div class="no-more">
           <p>没有更多了...</p>
@@ -26,10 +29,12 @@
 <script>
   import Header from '../public/Header.vue'
   import BScroll from 'better-scroll'
+  import DemoFooter from '../public/DemoFooter.vue'
   export default {
     name: 'FilmPage',
     components: {
-      Header
+      Header,
+      DemoFooter
     },
     data() {
       return {

@@ -6,12 +6,14 @@
         <div class="white"></div>
         <div class="pic-desc">
           <img :src="dataHome[0].img_url" @click="toDetailPage(dataHome[0].id, 0)">
-          <p class="pic-info">{{dataHome[0].title}} | {{dataHome[0].pic_info}}</p>
+          <p class="pic-info">{{dataHome[0].title_short}} | {{dataHome[0].pic_info}}</p>
           <p class="day">{{dataHome[0].day}}</p>
           <p class="date">{{dataHome[0].date}}</p>
           <p class="desc">&nbsp;&nbsp;{{dataHome[0].forward}}</p>
           <p class="desc-author">{{dataHome[0].words_info}}</p>
-          <first-demo-footer class="footer" :likeCount="dataHome[0].like_count"></first-demo-footer>
+          <div class="foot">
+            <others-demo-footer :likeCount="dataHome[0].like_count"></others-demo-footer>
+          </div>
         </div>
         <More :dataHome="dataHome" :showMore.sync="showMore" :allData="allData" :nameMap="nameMap"></More>
         <div v-for="(el,index) in dataHome" :key="index">
@@ -34,14 +36,14 @@
 <script>
   import Header from '../public/Header'
   import BScroll from 'better-scroll'
-  import FirstDemoFooter from '../public/FirstDemoFooter'
+  import DemoFooter from '../public/DemoFooter'
   import OthersDemoFooter from '../public/OthersDemoFooter'
   import More from './More'
   export default {
     name: 'HomePage',
     components: {
       Header,
-      FirstDemoFooter,
+      DemoFooter,
       OthersDemoFooter,
       More
     },
@@ -156,10 +158,8 @@
         font-size: 15px;
         color: #333;
       }
-      .footer {
-        position: absolute;
-        left: 0;
-        bottom: 0;
+      .foot {
+        padding: 0 20px;
       }
     }
     .demo {

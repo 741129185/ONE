@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="not-found">
     <img src="http://image.wufazhuce.com/m.wufazhuce.com-search-none.png">
     <p class="p-one">没有任何相关记录</p>
     <p class="p-two">浏览更多 <router-link to="/all" tag="span">精彩内容</router-link></p>
@@ -11,7 +11,7 @@
   }
 </script>
 <style lang="scss" scoped>
-  .main {
+  .not-found {
     padding-top: 50px;
     text-align: center;
     img {

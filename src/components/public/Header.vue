@@ -1,7 +1,7 @@
 <template>
   <div class="header" ref="header">
     <div class="title">{{newTitleText}}</div>
-    <div class="search" @click="toSearchPage"><img src="../../assets/img/search-logo.png"></div>
+    <div class="search" @click="toSearchPage" ref="search"><img src="../../assets/img/search-logo.png"></div>
   </div>
 </template>
 <script>

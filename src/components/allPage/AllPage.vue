@@ -44,6 +44,7 @@
     },
     data() {
       return {
+        loading: true,
         detailData: [],
         showIndex: 0,
         imgList: [

@@ -5,18 +5,17 @@
     <div class="img-text" ref="imgText">
       <ul>
         <div class="white"></div>
-        <router-link :to="{name:'ImgTextDetail', params:{id:item.id, detail:item, detailAll:detailList}}"
-                     tag="div"
-                     class="demo"
-                     v-for="(item,index) in detailList.detail"
-                     :key="index">
-          <p class="date">{{item.day}}{{item.date}}</p>
-          <p class="volume">{{item.volume}}</p>
-          <img :src="item.img_url">
-          <p class="pic-author">{{item.title}} / {{item.pic_author}}</p>
-          <p class="content">{{item.forward}}</p>
-          <p class="content-author">{{item.forward_author}}</p>
-        </router-link>
+        <div class="demo" v-for="(item,index) in detailList.detail" :key="index">
+          <div @click="toDetailPage(item.id,item,detailList)">
+            <p class="date">{{item.day}}{{item.date}}</p>
+            <p class="volume">{{item.volume}}</p>
+            <img :src="item.img_url">
+            <p class="pic-author">{{item.title}} / {{item.pic_author}}</p>
+            <p class="content">{{item.forward}}</p>
+            <p class="content-author">{{item.forward_author}}</p>
+          </div>
+          <demo-footer :likeCount="item.like_count" :id="item.id"></demo-footer>
+        </div>
         <div class="no-more">
           <p>没有更多了...</p>
         </div>
@@ -27,10 +26,12 @@
 <script>
   import Header from '../public/Header.vue'
   import BScroll from 'better-scroll'
+  import DemoFooter from '../public/DemoFooter.vue'
   export default {
     name: 'ImgTextPage',
     components: {
-      Header
+      Header,
+      DemoFooter
     },
     data() {
       return {
@@ -48,6 +49,16 @@
       showFootNav() {
         this.$emit('update:showNav', true)
       },
+      toDetailPage(id, detail, detailAll) {
+        this.$router.push({
+          name: 'ImgTextDetail',
+          params: {
+            id: id,
+            detail: detail,
+            detailAll: detailAll
+          }
+        })
+      },
       _initImgTextPageScroll() {
         if (!this.imgTextScroll) {
           this.imgTextScroll = new BScroll(this.$refs.imgText, {
@@ -58,7 +69,7 @@
         }
       },
       goBack() {
-          this.$emit('update:showNav', true)
+        this.$emit('update:showNav', true)
       }
     },
     mounted() {
@@ -86,7 +97,7 @@
       height: 667px;
       box-sizing: border-box;
       overflow: hidden;
-      &>ul {
+      & > ul {
         width: 100%;
         height: auto;
       }

@@ -5,7 +5,8 @@
       <div class="search" @click="search"><span><img src="../../assets/img/search.png"></span></div>
       <router-link to="/" class="close"><span><img src="../../assets/img/close.png"></span></router-link>
     </div>
-    <div class="result-box">
+    <div class="opacity-box" v-if="!showResultList"></div>
+    <div class="result-box" v-else>
       <div class="result-list">
         <router-link :to="{name:'SearchResultDetail', params:{name:'article',res:this.articleRes}}" tag="div">阅读
         </router-link>
@@ -28,7 +29,8 @@
         picRes: [2],
         questionRes: [3],
         filmRes: [4],
-        inputVal: null
+        inputVal: null,
+        showResultList: false
       }
     },
     computed: {
@@ -38,41 +40,48 @@
     },
     methods: {
       search() {
-        this.articleRes = []
-        this.picRes = []
-        this.questionRes = []
-        this.filmRes = []
-        // 获取阅读的匹配内容
-        this.searchFrom[1].detail.forEach(item => {
-          if (item.title.indexOf(this.inputVal) >= 0 || item.author.indexOf(this.inputVal) >= 0) {
-            this.articleRes.push(item)
-          }
-        })
-        // 获取图片的匹配内容
-        this.searchFrom[0].detail.forEach(item => {
-          if (item.title.indexOf(this.inputVal >= 0) || item.forward_author.indexOf(this.inputVal) >= 0 || item.forward.indexOf(this.inputVal) >= 0) {
-            this.picRes.push(item)
-          }
-        })
-        // 获取问答的匹配内容
-        this.searchFrom[2].detail.forEach(item => {
-          if (item.title.indexOf(this.inputVal) >= 0 || item.answers_name.indexOf(this.inputVal) >= 0 || item.question.indexOf(this.inputVal) >= 0) {
-            this.questionRes.push(item)
-          }
-        })
-        // 获取影视的匹配内容
-        this.searchFrom[4].detail.forEach(item => {
-          if (item.title.indexOf(this.inputVal) >= 0 || item.author.indexOf(this.inputVal) >= 0 || item.text_subtitle.indexOf(this.inputVal) >= 0) {
-            this.filmRes.push(item)
-          }
-        })
-        this.$router.push({
-          name: 'SearchResultDetail',
-          params: {
-            name: 'article',
-            res: this.articleRes
-          }
-        })
+        if (typeof this.inputVal === 'undefined' || this.inputVal === null || this.inputVal === '') {
+          alert('请输入搜索内容！')
+          return 0
+        } else {
+          this.showResultList = true
+          this.articleRes = []
+          this.picRes = []
+          this.questionRes = []
+          this.filmRes = []
+          // 获取阅读的匹配内容
+          this.searchFrom[1].detail.forEach(item => {
+            if (item.title.indexOf(this.inputVal) >= 0 || item.author.indexOf(this.inputVal) >= 0) {
+              this.articleRes.push(item)
+            }
+          })
+          // 获取图片的匹配内容
+          this.searchFrom[0].detail.forEach(item => {
+            if (item.forward_author.indexOf(this.inputVal) >= 0 || item.forward.indexOf(this.inputVal) >= 0) {
+              this.picRes.push(item)
+            }
+          })
+          console.log(this.picRes)
+          // 获取问答的匹配内容
+          this.searchFrom[2].detail.forEach(item => {
+            if (item.title.indexOf(this.inputVal) >= 0 || item.answers_name.indexOf(this.inputVal) >= 0 || item.question.indexOf(this.inputVal) >= 0) {
+              this.questionRes.push(item)
+            }
+          })
+          // 获取影视的匹配内容
+          this.searchFrom[4].detail.forEach(item => {
+            if (item.title.indexOf(this.inputVal) >= 0 || item.author.indexOf(this.inputVal) >= 0 || item.text_subtitle.indexOf(this.inputVal) >= 0) {
+              this.filmRes.push(item)
+            }
+          })
+          this.$router.push({
+            name: 'SearchResultDetail',
+            params: {
+              name: 'article',
+              res: this.articleRes
+            }
+          })
+        }
       }
     }
   }
@@ -116,6 +125,11 @@
           transform: translateX(-50%) translateY(-50%);
         }
       }
+    }
+    .opacity-box {
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
     }
     .result-box {
       width: 100%;

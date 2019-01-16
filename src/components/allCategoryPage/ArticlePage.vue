@@ -5,9 +5,8 @@
     <div class="article" ref="article">
       <ul>
         <div class="white"></div>
-        <div class="demo" v-for="(item,index) in detailAll.detail" :key="index"
-             @click="toDetail(item,detailAll)">
-          <div class="demo-box">
+        <div class="demo" v-for="(item,index) in detailAll.detail" :key="index">
+          <div class="demo-box" @click="toDetail(item,detailAll)">
             <p class="head">- STORY -</p>
             <p class="title">{{item.title}}</p>
             <p class="author">文 / {{item.author}}</p>
@@ -15,6 +14,7 @@
             <p class="content-short">{{item.content_short}}</p>
             <p class="date"><span>{{item.day}}</span>&nbsp;&nbsp;<span>{{item.date}}</span></p>
           </div>
+            <demo-footer :likeCount="item.like_count" :id ="item.id"></demo-footer>
         </div>
         <div class="no-more">
           <p>没有更多了...</p>
@@ -26,10 +26,12 @@
 <script>
   import Header from '../public/Header.vue'
   import BScroll from 'better-scroll'
+  import DemoFooter from '../public/DemoFooter.vue'
   export default {
     name: 'ArticlePage',
     components: {
-      Header
+      Header,
+      DemoFooter
     },
     data() {
       return {

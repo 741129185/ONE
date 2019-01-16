@@ -5,18 +5,21 @@
     <div class="music" ref="music">
       <ul>
         <div class="white"></div>
-        <div class="demo" v-for="(item,index) in detailAll.detail" :key="index" @click="toDetail(item,detailAll)">
-          <p class="head">- 音乐 -</p>
-          <p class="title">{{item.text_title}}</p>
-          <p class="author">文 / {{item.text_author}}</p>
-          <div class="music-box">
-            <img class="pic" :src="item.categoryPage_img">
-            <img class="play" :src="item.play_icon">
-            <img class="play-tool" :src="item.music_play_icon">
+        <div class="demo" v-for="(item,index) in detailAll.detail" :key="index">
+          <div @click="toDetail(item,detailAll)">
+            <p class="head">- 音乐 -</p>
+            <p class="title">{{item.text_title}}</p>
+            <p class="author">文 / {{item.text_author}}</p>
+            <div class="music-box">
+              <img class="pic" :src="item.categoryPage_img">
+              <img class="play" :src="item.play_icon">
+              <img class="play-tool" :src="item.music_play_icon">
+            </div>
+            <p class="music-detail">{{item.music_name}} · {{item.music_singer}} | {{item.album}}</p>
+            <p class="text">{{item.forward}}</p>
+            <p class="date">{{item.date}}</p>
           </div>
-          <p class="music-detail">{{item.music_name}} · {{item.music_singer}} | {{item.album}}</p>
-          <p class="text">{{item.forward}}</p>
-          <p class="date">{{item.date}}</p>
+          <demo-footer :likeCount="item.like_count" :id="item.id"></demo-footer>
         </div>
         <div class="no-more">
           <p>没有更多了...</p>
@@ -28,6 +31,7 @@
 <script>
   import Header from '../public/Header.vue'
   import BScroll from 'better-scroll'
+  import DemoFooter from '../public/DemoFooter.vue'
   export default {
     name: 'MusicPage',
     props: ['showNav'],
@@ -37,7 +41,8 @@
       }
     },
     components: {
-      Header
+      Header,
+      DemoFooter
     },
     computed: {
       detailAll() {

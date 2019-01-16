@@ -5,16 +5,17 @@
     <div class="question" ref="question">
       <ul>
         <div class="white"></div>
-        <div class="demo" v-for="(item,index) in detailAll.detail" :key="index" @click="toDetailPage(item,detailAll)">
-          <div class="demo-box">
+        <div class="demo" v-for="(item,index) in detailAll.detail" :key="index">
+          <div class="demo-box" @click="toDetailPage(item,detailAll)">
             <p class="date">{{item.date}}</p>
             <p class="title">{{item.title}}</p>
             <p class="content-short" v-html="item.answer">{{item.answer}}</p>
             <p class="read-all">阅读全文</p>
           </div>
-          <div class="no-more">
-            <p>没有更多了...</p>
-          </div>
+          <demo-footer :likeCount="item.like_count" :id="item.id" :item="item"></demo-footer>
+        </div>
+        <div class="no-more">
+          <p>没有更多了...</p>
         </div>
       </ul>
     </div>
@@ -23,11 +24,13 @@
 <script>
   import Header from '../public/Header.vue'
   import BScroll from 'better-scroll'
+  import DemoFooter from '../public/DemoFooter.vue'
   export default {
     name: 'QuestionPage',
     props: ['showNav'],
     components: {
-      Header
+      Header,
+      DemoFooter
     },
     data() {
       return {
@@ -97,11 +100,11 @@
         }
         .demo {
           padding: 20px;
+          border-bottom: 1px solid #dcdcdc;
           .demo-box {
             width: 100%;
             height: 100%;
-            padding-bottom: 50px;
-            border-bottom: 1px solid #dcdcdc;
+            padding-bottom: 20px;
             .date {
               font-size: 16px;
               margin: 0 0 20px 0;

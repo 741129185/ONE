@@ -2,7 +2,7 @@
   <div id="app">
     <Loading v-if="loading"></Loading>
     <div v-else>
-      <router-view :dataHome="dataHome" :showNav.sync="showNav" :allData="allData"></router-view>
+        <router-view :dataHome="dataHome" :showNav.sync="showNav" :allData="allData"></router-view>
       <transition name="footFade">
         <foot-navigation v-show="showNav" :showNav.sync="showNav"></foot-navigation>
       </transition>
@@ -21,7 +21,8 @@
         dataHome: [],
         showNav: false,
         detailAll: [],
-        allData: {}
+        allData: {},
+        unLogin: false
       }
     },
     components: {
@@ -35,7 +36,6 @@
           res = res.data
           if (res.errno === 0) { // 模仿真实开发,判断当前数据是否有权限获取
             this.dataHome = res.data
-//            this.loading = false
           }
         })
     },

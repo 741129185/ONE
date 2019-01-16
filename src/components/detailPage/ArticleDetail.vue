@@ -80,7 +80,7 @@
           }
       }
     },
-    mounted() {
+    created() {
       this.$nextTick(() => {
         this._initArticleDetailScroll()
       })

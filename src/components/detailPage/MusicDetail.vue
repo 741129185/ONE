@@ -85,7 +85,7 @@
         }
       }
     },
-    mounted() {
+    created() {
       this.$nextTick(() => {
         this._initMusicDetailScroll()
       })

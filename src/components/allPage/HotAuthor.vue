@@ -10,9 +10,6 @@
           <p class="author-summary">{{item.summary}}</p>
         </div>
       </router-link>
-      <div class="follow">
-        关注
-      </div>
     </div>
     <div class="change-box">
       <button class="change-btn" @click="changeAuthors">换一换</button>
@@ -74,14 +71,13 @@
       .demo {
         display: flex;
         .author-img {
-          display: inline-block;
           height: 40px;
           width: 40px;
           border-radius: 50%;
         }
         .author-desc {
           width: 220px;
-          padding: 0 10px;
+          padding: 0 20px;
           overflow: hidden;
           .author-name,
           .author-summary {
@@ -101,19 +97,6 @@
             font-size: 13px;
           }
         }
-      }
-      .follow {
-        transform: translateY(5px);
-        border: 1px solid #969696;
-        width: 50px;
-        height: 30px;
-        font-size: 13px;
-        color: #969696;
-        box-sizing: border-box;
-        border-radius: 5px;
-        text-align: center;
-        line-height: 30px;
-        z-index: 70;
       }
     }
     .change-box {

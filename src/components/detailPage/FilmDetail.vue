@@ -71,7 +71,7 @@
         }
       }
     },
-    mounted() {
+    created() {
       this.$nextTick(() => {
         this._initFilmDetailScroll()
       })
